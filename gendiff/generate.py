@@ -1,31 +1,16 @@
-import json
-
-
-file1 = '../modules/file1.json'
-file2 = '../modules/file2.json'
+from gendiff.utils.redactors import converter
+from gendiff.utils.redactors import string_redactor
+from gendiff.utils.conversion import open_file
 
 
 def generate_diff(file1, file2):
-    with open(file1, 'r') as f1, open(file2, 'r') as f2:
-        data1 = json.load(f1)
-        data2 = json.load(f2)
-        new_data1 = converter(data1)
-        new_data2 = converter(data2)
-        result_dict = make_diff(new_data1, new_data2)
-        result_str = str(result_dict)
-        result = result_str.replace(",", ",\n")
-        return result
-
-
-def converter(input_dict):
-    output_dict = {}
-    for key, value in input_dict.items():
-        if isinstance(key, bool) or isinstance(key, type(None)):
-            key = str(key).lower()
-        if isinstance(value, bool) or isinstance(value, type(None)):
-            value = str(value).lower()
-        output_dict[key] = value
-    return output_dict
+    data1 = open_file(file1)
+    data2 = open_file(file2)
+    new_data1 = converter(data1)
+    new_data2 = converter(data2)
+    result_dict = make_diff(new_data1, new_data2)
+    result = string_redactor(result_dict)
+    return result
 
 
 def make_diff(new_data1, new_data2):
@@ -41,5 +26,8 @@ def make_diff(new_data1, new_data2):
         if k not in new_data1 or new_data1[k] != new_data2[k]:
             new_k = '+ ' + k
             result_dict[new_k] = v
-    result_dict = dict(sorted(result_dict.items(), key = lambda x: x[0][2]))
+    result_dict = dict(sorted(result_dict.items(), key=lambda x: x[0][2]))
     return result_dict
+
+
+print(generate_diff(file1, file2))
