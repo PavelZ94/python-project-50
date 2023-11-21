@@ -2,9 +2,6 @@ from gendiff.utils.redactors import converter
 from gendiff.utils.redactors import string_redactor
 from gendiff.utils.conversion import open_file
 
-file1 = 'gendiff/modules/file1.json'
-file2 = 'gendiff/modules/file2.json'
-
 
 def generate_diff(file1, file2):
     data1 = open_file(file1)
