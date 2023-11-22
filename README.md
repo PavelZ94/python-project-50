@@ -8,5 +8,9 @@
 [![Python CI](https://github.com/PavelZ94/python-project-50/actions/workflows/main.yml/badge.svg)](https://github.com/PavelZ94/python-project-50/actions/workflows/main.yml)
 
 
-gendiff 'modules/file1.json' 'modules/file2.json'
+showing the project's work:
+Showing diffs between two flat .json files:
 [![asciicast](https://asciinema.org/a/NOpxG6RrTPD0NvW8RP3C0uxJe.svg)](https://asciinema.org/a/NOpxG6RrTPD0NvW8RP3C0uxJe)
+
+Showing diffs between two flat .yml files:
+[![asciicast](https://asciinema.org/a/cAPt71M6dzjKnfRQA6n33SZGl.svg)](https://asciinema.org/a/cAPt71M6dzjKnfRQA6n33SZGl)
