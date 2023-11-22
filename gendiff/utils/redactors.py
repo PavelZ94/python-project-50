@@ -12,5 +12,5 @@ def converter(input_dict):
 
 def string_redactor(input_dict):
     input_string = str(input_dict)
-    result = input_string.replace(",", ",\n").replace("'", "")
+    result = input_string.replace('"', '')
     return result
