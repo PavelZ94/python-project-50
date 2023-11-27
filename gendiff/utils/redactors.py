@@ -1,16 +1,32 @@
 
-def converter(input_dict):
-    output_dict = {}
-    for key, value in input_dict.items():
-        if isinstance(key, bool) or isinstance(key, type(None)):
-            key = str(key).lower()
-        if isinstance(value, bool) or isinstance(value, type(None)):
-            value = str(value).lower()
-        output_dict[key] = value
-    return output_dict
+ADDED = "added"
+REMOVED = "removed"
+UNCHANGED = "unchanged"
+UPDATED = "updated"
+BOTH_HAVE_CHILDREN = "both_have_children"
 
 
-def string_redactor(input_dict):
-    input_string = str(input_dict)
-    result = input_string.replace('"', '')
+def value_to_json(value):
+    if value is None:
+        result = 'null'
+    elif type(value) is bool:
+        result = 'true' if value else 'false'
+    else:
+        result = str(value)
     return result
+
+
+def get_node_type(node):
+    if node["children"]:
+        node_type = BOTH_HAVE_CHILDREN
+    elif node["old_name"] is None and node["new_name"] is not None:
+        node_type = ADDED
+    elif node["old_name"] is not None and node["new_name"] is None:
+        node_type = REMOVED
+    elif node["old_value"] == node["new_value"]:
+        node_type = UNCHANGED
+    elif node["old_value"] != node["new_value"]:
+        node_type = UPDATED
+    else:
+        raise ValueError(f"Unable to determine type of {node}")
+    return node_type
