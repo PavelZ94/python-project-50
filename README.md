@@ -14,3 +14,6 @@ Showing diffs between two flat .json files:
 
 Showing diffs between two flat .yml files:
 [![asciicast](https://asciinema.org/a/cAPt71M6dzjKnfRQA6n33SZGl.svg)](https://asciinema.org/a/cAPt71M6dzjKnfRQA6n33SZGl)
+
+Showing diffs between two stylish .json and .yml files:
+[![asciicast](https://asciinema.org/a/MPUod5brz5WMi1RDGRnKq7RtC.svg)](https://asciinema.org/a/MPUod5brz5WMi1RDGRnKq7RtC)
