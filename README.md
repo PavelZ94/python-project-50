@@ -8,7 +8,8 @@
 [![Python CI](https://github.com/PavelZ94/python-project-50/actions/workflows/main.yml/badge.svg)](https://github.com/PavelZ94/python-project-50/actions/workflows/main.yml)
 
 
-showing the project's work:
+Showing the project's work:
+
 Showing diffs between two flat .json files:
 [![asciicast](https://asciinema.org/a/NOpxG6RrTPD0NvW8RP3C0uxJe.svg)](https://asciinema.org/a/NOpxG6RrTPD0NvW8RP3C0uxJe)
 
@@ -17,3 +18,6 @@ Showing diffs between two flat .yml files:
 
 Showing diffs between two stylish .json and .yml files:
 [![asciicast](https://asciinema.org/a/MPUod5brz5WMi1RDGRnKq7RtC.svg)](https://asciinema.org/a/MPUod5brz5WMi1RDGRnKq7RtC)
+
+Showing diffs between two files in plain format:
+[![asciicast](https://asciinema.org/a/jjoPUNJ38PUeYcrN8P82ckDyy.svg)](https://asciinema.org/a/jjoPUNJ38PUeYcrN8P82ckDyy)

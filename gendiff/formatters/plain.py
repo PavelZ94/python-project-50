@@ -1,38 +1,34 @@
 from gendiff.utils import redactors
 
 
-TWO_SPACES = ' ' * 2
-FOUR_SPACES = ' ' * 4
-
-
-def make_plain(diff):
-    output = '{'
-    if len(diff) > 0:
-        output += '\n'
-    for node in diff:
-        output += node_to_str(node) + '\n'
-    output += '}'
-    return output
-
-
-def node_to_str(node):
-    node_type = redactors.get_node_type(node)
+def make_plain(diff, path=''):
     result = []
-    if node_type == redactors.UNCHANGED:
-        result = (f"{FOUR_SPACES}{node['old_name']}: "
-                  f"{redactors.value_to_json(node['old_value'])}")
-    elif node_type == redactors.REMOVED:
-        result = (f"{TWO_SPACES}- {node['old_name']}: "
-                  f"{redactors.value_to_json(node['old_value'])}")
-    elif node_type == redactors.ADDED:
-        result = (f"{TWO_SPACES}+ {node['new_name']}: "
-                  f"{redactors.value_to_json(node['new_value'])}")
-    elif node_type == redactors.UPDATED:
-        first_str = (f"{TWO_SPACES}- {node['old_name']}"
-                     f": {redactors.value_to_json(node['old_value'])}")
-        second_str = (f"{TWO_SPACES}+ {node['new_name']}"
-                      f": {redactors.value_to_json(node['new_value'])}")
-        result = first_str + '\n' + second_str
+    for node in diff:
+        node_type = redactors.get_node_type(node)
+        curr_path = ".".join(filter(bool, [path, node["new_name"]]))
+
+        old_val = val_to_str(node['old_value'])
+        new_val = val_to_str(node['new_value'])
+
+        if node_type == redactors.BOTH_HAVE_CHILDREN:
+            result.append(make_plain(node['children'], curr_path))
+        elif node_type == redactors.REMOVED:
+            result.append(f"Property '{node['old_name']}' was removed")
+        elif node_type == redactors.ADDED:
+            result.append(f"Property '{curr_path}' was added with "
+                          f"value: {new_val}")
+        elif node_type == redactors.UPDATED:
+            result.append(f"Property '{curr_path}' was updated. "
+                          f"From {old_val} to {new_val}")
+        else:
+            pass
+    return "\n".join(result)
+
+
+def val_to_str(node):
+    if isinstance(node, dict):
+        return '[complex value]'
+    elif node in ['true', 'false', 'null']:
+        return redactors.value_to_json(node)
     else:
-        raise ValueError(f"Node type '{node_type}' is unknown")
-    return result
+        return f"'{redactors.value_to_json(node)}'"
