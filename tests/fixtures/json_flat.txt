@@ -1,0 +1,37 @@
+[
+ {
+  "old_name": "follow",
+  "new_name": null,
+  "old_value": false,
+  "new_value": null,
+  "children": null
+ },
+ {
+  "old_name": "host",
+  "new_name": "host",
+  "old_value": "hexlet.io",
+  "new_value": "hexlet.io",
+  "children": null
+ },
+ {
+  "old_name": "proxy",
+  "new_name": null,
+  "old_value": "123.234.53.22",
+  "new_value": null,
+  "children": null
+ },
+ {
+  "old_name": "timeout",
+  "new_name": "timeout",
+  "old_value": 50,
+  "new_value": 20,
+  "children": null
+ },
+ {
+  "old_name": null,
+  "new_name": "verbose",
+  "old_value": null,
+  "new_value": true,
+  "children": null
+ }
+]
