@@ -7,6 +7,35 @@
 
 [![Python CI](https://github.com/PavelZ94/python-project-50/actions/workflows/main.yml/badge.svg)](https://github.com/PavelZ94/python-project-50/actions/workflows/main.yml)
 
+# Difference calculator
+
+This is the second learning project.
+It is CLI program to show the differences between two **JSON** of **YAML** files in next formats:
+- stylish;
+- plain;
+- json.
+
+## Installation:
+To install the package you should have:
+- Python 3.10+
+- poetry
+
+After you are sure that all programs are installed follow these steps:
+- ```make install```
+- ```make build```
+- ```make package-reinstall```
+
+## Commands to show the differences between files:
+```gendiff <file_path1> <file_path2> --format <format>```
+
+then:
+- *< format >* - stylish/plain/json;
+- *<file_path1>* - path of first file;
+- *<file_path2>* - path of second file.
+
+## Other useful commands:
+```gendiff -h``` - shows help of using program
+
 
 ## Showing the project's work:
 
